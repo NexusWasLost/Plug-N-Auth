@@ -181,8 +181,8 @@ Each endpoint expects specific fields in the request body or headers. This secti
 
 Still have questions or Issues or want to collaborate ? Feel free to reach out !
 
-- [Github ↗](https://github.com/nexus949)
+- [Github ↗](https://github.com/NexusWasLost)
 
-- [Website ↗](https://nexus949.github.io/portfolio_website)
+- [Website ↗](https://nexuswaslost.github.io/portfolio_website)
 
 I’d love to hear your feedback — or just say hi 👋
