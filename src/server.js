@@ -27,11 +27,11 @@ app.get("/", function(req, res){
 /**
  * Import Routes and use them
 */
-import _signup from "./v1/routes/signup.route.js";
-import _login from "./v1/routes/login.route.js";
-import _status from "./v1/routes/status.route.js";
-import _update from "./v1/routes/update.route.js";
-import _delete from "./v1/routes/delete.route.js";
+import _signup from "./routes/signup.route.js";
+import _login from "./routes/login.route.js";
+import _status from "./routes/status.route.js";
+import _update from "./routes/update.route.js";
+import _delete from "./routes/delete.route.js";
 
 app.use('/user', _signup);
 app.use('/user', _login);

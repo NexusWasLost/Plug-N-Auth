@@ -5,10 +5,10 @@ const router = express.Router();
 
 import {
 
-    status
+    _delete
 
-} from "../controllers/status.controller.js";
+} from "../controllers/delete.controller.js";
 
-router.get("/v1/status", verifyToken, status);
+router.delete("/deleteUser", verifyToken, _delete);
 
 export default router;

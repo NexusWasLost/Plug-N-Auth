@@ -4,10 +4,10 @@ const router = express.Router();
 
 import {
 
-    signup
+    login
 
-} from "../controllers/signup.controller.js";
+} from "../controllers/login.controller.js";
 
-router.post("/v1/signup", signup);
+router.post("/login", login);
 
 export default router;
