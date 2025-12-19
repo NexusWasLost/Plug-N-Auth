@@ -1,6 +1,6 @@
-import tokenModel from "../models/tokenSchema";
+import tokenModel from "../models/tokenSchema.js";
 import { generateToken } from "../middlewares/auth.js";
-import { verifyRefreshToken } from "../utils/genRefToken";
+import { verifyRefreshToken } from "../utils/genRefToken.js";
 
 export async function refresh(req, res){
     try{
