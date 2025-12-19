@@ -1,5 +1,7 @@
 import userModel from "../models/schema.js";
+import tokenModel from "../models/tokenSchema.js";
 import { generateToken } from "../middlewares/auth.js";
+import { generateRefreshToken } from "../utils/genRefToken.js";
 import { testMail } from "../utils/testMail.js";
 import { testPass } from "../utils/testPass.js";
 import { hashPassword } from "../utils/hash.js";
@@ -37,17 +39,32 @@ export async function signup(req, res) {
         let newUser = new userModel(signupData);
         newUser.password = await hashPassword(newUser.password);
 
+        //create a refresh Token and store it in the user document
+        const { rawRefToken, hashedRefToken } = await generateRefreshToken();
+        let newRefreshToken = new tokenModel({
+            uid: newUser.id,
+            refreshToken: hashedRefToken,
+        })
+        //save the refresh token
+        await newRefreshToken.save();
+
+        //save new user
         await newUser.save();
 
         //JWT creation
         const payload = {
             sub: newUser.id.toString(),
-            service: newUser.serviceName,
-            accessVersion: newUser.accessVersion
+            aud: newUser.serviceName,
         };
-        const token = generateToken(payload, "30m");
+        const token = generateToken(payload, "15m");
 
-        res.status(200).json({
+        res.status(200)
+        .cookie("refreshToken", rawRefToken, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 5 * 60 * 1000 //5 minutes (for testing)
+        })
+        .json({
             message: "User created Successfully ✅ !",
             token: token
         });

@@ -20,24 +20,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Service Name is required !"],
         trim: true,
-        default: "plug-n-auth"
+        default: "plug-n-auth-api"
     },
-
-    //breadcrums 🍞 ! Might implement as a later feature !
-    // username:{
-    //     type: String,
-    //     required: false,
-    //     unique: true,
-    //     trim: true,
-    //     default: null
-    // },
-
-    //breadcrums 🍞 ! Might implement as a later feature !
-    // phone:{
-    //     type: Number,
-    //     required: false,
-    //     default: null
-    // },
 
     firstName: {
         type: String,
@@ -62,22 +46,10 @@ const userSchema = new mongoose.Schema({
 
     createdOn: {
         type: Date,
-        required: false,
+        required: true,
         default: Date.now,
         immutable: true
     },
-
-    accessVersion:{
-        type: Number,
-        required: true,
-        default: 1
-    },
-
-    //breadcrums 🍞 ! Might implement as a later feature !
-    // updatedOn:{
-    //     type: Date,
-    //     required: false,
-    // },
 
     //for custom data
     meta: {
